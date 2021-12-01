@@ -1,0 +1,156 @@
+/**
+ *
+ * @author Lucas
+ */
+ //Prueba imperativa
+public class MobilePhone {
+
+    private float cost;
+    private float credit;
+    private String dni;
+    private int number;
+    private int pinCode;
+    private int pukCode;
+    private int point;
+    private float rate0;
+    private float rate1;
+
+    public MobilePhone(String number, String dni, String cost, String pinCode, String pukCode, String credit, String rate0, String rate1) {
+        this.cost = Integer.parseInt(cost);
+        this.credit = Integer.parseInt(credit);
+        this.dni = dni;
+        this.number = Integer.parseInt(number);
+        this.pinCode = Integer.parseInt(pinCode);
+        this.pukCode = Integer.parseInt(pukCode);
+        this.rate0 = Float.parseFloat(rate0);
+        this.rate1 = Float.parseFloat(rate1);
+    }
+
+    public void call(String seconds, int rate) {
+        if (rate == 0) {
+
+            credit = credit - (rate0 * Float.parseFloat(seconds));
+        } else if (rate == 1) {
+
+            credit = credit - (rate1 * Float.parseFloat(seconds));
+        } else {
+            System.out.println("Tarifa no disponible");
+        }
+    }
+
+    public void changePin(String oldpin, String newpin) {
+
+        if (pinCode == Integer.parseInt(oldpin)) {
+            pinCode = Integer.parseInt(newpin);
+        } else {
+            System.out.println("Pin incorrecto");
+        }
+    }
+
+    public boolean unblock(String pukCode) {
+
+        if (this.pukCode == Integer.parseInt(pukCode)) {
+            System.out.println("Bienvenido");
+            return true;
+        } else {
+            System.out.println("Puk incorrecto");
+
+            return false;
+
+        }
+
+    }
+
+    public void recharge(String credit) {
+        credit = credit + point;
+        point = Integer.parseInt(credit);
+    }
+
+    public boolean welcome(String pinCode) {
+        if (this.pinCode == Integer.parseInt(pinCode)) {
+            System.out.println("Bienvenido");
+            return true;
+        } else {
+            System.out.println("Pin incorrecto");
+
+            return false;
+
+        }
+    }
+
+    public float getCost() {
+        return cost;
+    }
+
+    public float getCredit() {
+        return credit;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int getPinCode() {
+        return pinCode;
+    }
+
+    public int getPukCode() {
+        return pukCode;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public float getRate0() {
+        return rate0;
+    }
+
+    public float getRate1() {
+        return rate1;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public void setCredit(float credit) {
+        this.credit = credit;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setPinCode(int pinCode) {
+        this.pinCode = pinCode;
+    }
+
+    public void setPukCode(int pukCode) {
+        this.pukCode = pukCode;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+    }
+
+    public void setRate0(float rate0) {
+        this.rate0 = rate0;
+    }
+
+    public void setRate1(float rate1) {
+        this.rate1 = rate1;
+    }
+
+    public String information() {
+        return "Precio" + cost + "\n" + "Credito " + credit + "\n" + "DNI" + dni + "\n" + "Numero: " + number + "\n" + "Numero PIN" + pinCode + "\n" + "Ratio 1" + rate1 +"\n"+"Ratio 0: "+rate0;
+    }
+}
